@@ -1,0 +1,5 @@
+require('avyshar.keymaps')
+require('avyshar.options')
+require('avyshar.modules')
+require('avyshar.autocmd')
+require('avyshar.plugins')
