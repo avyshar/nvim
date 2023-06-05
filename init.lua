@@ -1,1 +1,2 @@
-require('avyshar')
+-- require('avyshar')
+require('v2')
