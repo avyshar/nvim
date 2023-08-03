@@ -21,3 +21,5 @@ map('n', '<leader>fb', ':Telescope buffers<cr>')
 map('n', '<leader>fo', ':Telescope oldfiles<cr>')
 
 map('n', '<leader>gs', ':Telescope git_status<cr>')
+
+map('t', '<Esc>', '<C-\\><C-n>')
