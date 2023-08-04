@@ -6,5 +6,11 @@ return {
         config = function()
             require('telescope').setup {}
         end
-    }
+    },
+    {
+        "stevearc/oil.nvim",
+        config = function()
+            require('oil').setup()
+        end
+    },
 }

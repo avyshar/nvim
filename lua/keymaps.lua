@@ -2,7 +2,7 @@ vim.g.mapleader = ' '
 local map = vim.keymap.set
 
 map('n', '<leader>q', vim.cmd.quit)
-map('n', '<leader>e', vim.cmd.Explore)
+map('n', '<leader>e', ":Oil<cr>")
 map('n', '<leader>w', vim.cmd.write)
 
 map('n', '<leader>;', '<cmd>lua vim.lsp.buf.code_action()<cr>')
