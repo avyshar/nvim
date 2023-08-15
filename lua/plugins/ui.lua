@@ -1,22 +1,19 @@
 return {
     {
-        "kyoh86/momiji",
-        config = function()
-            -- vim.cmd('colorscheme momiji')
-        end,
-    },
-    {
-        "joshdick/onedark.vim",
-        config = function()
-            vim.cmd('colorscheme onedark')
-        end,
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+        config = function ()
+            vim.cmd[[colorscheme tokyonight-day]]
+        end
     },
     {
         "itchyny/lightline.vim",
         config = function()
             -- Set the lightline configuration
             vim.g.lightline = {
-                colorscheme = 'onedark',
+                colorscheme = 'tokyonight',
                 active = {
                     left = {
                         { 'mode', 'paste' },
