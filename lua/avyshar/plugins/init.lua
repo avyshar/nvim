@@ -12,11 +12,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-    require('avyshar.plugins.telescope'),
-    require('avyshar.plugins.colorscheme'),
-    require('avyshar.plugins.treesitter'),
-    require('avyshar.plugins.lsp'),
-    require('avyshar.plugins.ui'),
+  require('avyshar.plugins.ui'),
+  require('avyshar.plugins.lsp'),
+  require('avyshar.plugins.typescript'),
 }
 
 require("lazy").setup(plugins)
