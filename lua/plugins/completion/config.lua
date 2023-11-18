@@ -8,6 +8,7 @@ function M.cmp(_, bufnr)
   require('luasnip.loaders.from_vscode').lazy_load()
   luasnip.config.setup {}
 
+
   cmp.setup {
     snippet = {
       expand = function(args)
@@ -22,9 +23,10 @@ function M.cmp(_, bufnr)
       ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
       ['<C-d>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete {},
+      ['<C-y>'] = cmp.mapping.complete({}),
       ["<C-e>"] = cmp.mapping.abort(),
       ['<CR>'] = cmp.mapping.confirm {
+        behavior = cmp.SelectBehavior.Replace,
         select = true,
       },
       ['Tab'] = nil,

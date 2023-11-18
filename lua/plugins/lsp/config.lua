@@ -73,6 +73,8 @@ function M.get_lsp_config(_, bufnr)
     -- gopls = {},
     -- pyright = {},
     -- rust_analyzer = {},
+    cssls = {},
+    jsonls = {},
     tsserver = {},
     html = { filetypes = { 'html', 'twig', 'hbs'} },
 
