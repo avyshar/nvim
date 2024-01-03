@@ -1,6 +1,9 @@
 local luasnip = require 'luasnip'
 
 -- nvim-cmp setup
+require('copilot').setup{}
+require('copilot_cmp').setup{}
+
 local cmp = require 'cmp'
 cmp.setup {
     snippet = {
@@ -37,7 +40,9 @@ cmp.setup {
         end, { 'i', 's' }),
     }),
     sources = {
+        { name = 'copilot' },
         { name = 'nvim_lsp' },
+        { name = 'path' },
         { name = 'luasnip' },
     },
 }

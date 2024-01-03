@@ -4,8 +4,11 @@ return {
         "folke/neodev.nvim",
         'hrsh7th/nvim-cmp', -- Autocompletion plugin
         'hrsh7th/cmp-nvim-lsp', -- LSP source for nvim-cmp
+        'hrsh7th/cmp-path',
+        'zbirenbaum/copilot.lua',
+        'zbirenbaum/copilot-cmp',
         'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
-        'L3MON4D3/LuaSnip' -- Snippets plugin
+        'L3MON4D3/LuaSnip', -- Snippets plugin
     },
     config = function()
         require("neodev").setup({
@@ -54,6 +57,5 @@ return {
                 end, opts)
             end,
         })
-
     end
 }
