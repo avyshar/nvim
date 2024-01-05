@@ -3,10 +3,9 @@ return {
         "ellisonleao/gruvbox.nvim",
         priority = 1000 ,
         config = function()
-            print "ignore gruvbox"
             vim.cmd[[colorscheme gruvbox]]
         end,
-        enable = false,
+        enabled = false,
     },
     {
         'ayu-theme/ayu-vim',
