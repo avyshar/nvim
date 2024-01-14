@@ -11,3 +11,5 @@ vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 vim.keymap.set('n', '-', function ()
    vim.cmd[[Explore]]
 end,{ desc = "Open Explorer" })
+
+
