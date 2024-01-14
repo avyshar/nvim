@@ -1,4 +1,4 @@
-require('avyshar.options')
-require('avyshar.autocmd')
-require('avyshar.keymaps')
-require('avyshar.lazy')
+require 'avyshar.options'
+require 'avyshar.autocmd'
+require 'avyshar.keymaps'
+require 'avyshar.lazy'

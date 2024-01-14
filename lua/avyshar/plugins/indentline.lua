@@ -1,23 +1,23 @@
 local M = {
-  "lukas-reineke/indent-blankline.nvim",
-  event = "VeryLazy",
-  commit = "9637670896b68805430e2f72cf5d16be5b97a22a",
+  'lukas-reineke/indent-blankline.nvim',
+  event = 'VeryLazy',
+  commit = '9637670896b68805430e2f72cf5d16be5b97a22a',
 }
 
 function M.config()
-  local icons = require "avyshar.icons"
+  local icons = require 'avyshar.icons'
 
-  require("indent_blankline").setup {
-    buftype_exclude = { "terminal", "nofile" },
+  require('indent_blankline').setup {
+    buftype_exclude = { 'terminal', 'nofile' },
     filetype_exclude = {
-      "help",
-      "startify",
-      "dashboard",
-      "lazy",
-      "neogitstatus",
-      "NvimTree",
-      "Trouble",
-      "text",
+      'help',
+      'startify',
+      'dashboard',
+      'lazy',
+      'neogitstatus',
+      'NvimTree',
+      'Trouble',
+      'text',
     },
     -- char = icons.ui.LineLeft,
     char = icons.ui.LineMiddle,
@@ -51,4 +51,3 @@ function M.config()
 end
 
 return M
-
