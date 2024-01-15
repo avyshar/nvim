@@ -85,10 +85,10 @@ function M.config()
           luasnip.expand_or_jump()
         elseif check_backspace() then
           fallback()
-          -- require("neotab").tabout()
+          require("neotab").tabout()
         else
           fallback()
-          -- require("neotab").tabout()
+          require("neotab").tabout()
         end
       end, {
         'i',
