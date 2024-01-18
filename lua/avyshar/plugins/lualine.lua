@@ -8,6 +8,7 @@ local M = {
 function M.config()
   require('lualine').setup {
     options = {
+      theme = 'onedark',
       component_separators = { left = '', right = '' },
       section_separators = { left = '', right = '' },
       ignore_focus = { 'NvimTree' },
@@ -19,6 +20,14 @@ function M.config()
       lualine_x = { 'copilot', 'filetype' },
       lualine_y = { 'progress' },
       lualine_z = {},
+    },
+    tabline = {
+      lualine_a = { 'buffers' },
+      lualine_b = {},
+      lualine_c = { 'filename' },
+      lualine_x = {},
+      lualine_y = {},
+      lualine_z = { 'tabs' }
     },
     extensions = { 'quickfix', 'man', 'fugitive' },
   }

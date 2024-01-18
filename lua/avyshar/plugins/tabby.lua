@@ -80,6 +80,7 @@ end
 return {
   'nanozuki/tabby.nvim',
   event = 'VeryLazy',
+  enabled = false,
   config = function()
     require('tabby.tabline').set(function(line)
       return {
