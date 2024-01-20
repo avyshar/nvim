@@ -1,6 +1,7 @@
 local M = {
   'ahmedkhalf/project.nvim',
   event = 'VeryLazy',
+  enabled = false,
 }
 
 function M.config()

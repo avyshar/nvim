@@ -1,6 +1,7 @@
 local M = {
   'kevinhwang91/nvim-bqf',
   event = 'VeryLazy',
+  enabled = false,
 }
 
 function M.config()

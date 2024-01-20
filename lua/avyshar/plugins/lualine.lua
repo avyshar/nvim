@@ -3,6 +3,7 @@ local M = {
   dependencies = {
     'AndreM222/copilot-lualine',
   },
+  enabled = false,
 }
 
 function M.config()

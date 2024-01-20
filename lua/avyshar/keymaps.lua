@@ -1,7 +1,7 @@
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-keymap('n', '<Space>', '', opts)
+-- keymap('n', '<Space>', '', opts)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -34,4 +34,4 @@ keymap('n', '<leader>Y', [["+Y]])
 
 keymap('n', '<leader>-', ':Ex<CR>', { desc = 'Open Explorer' })
 keymap('t', '<Esc>', '<C-\\><C-n>', opts)
--- keymap('n', '<Esc>', ':nohl', opts)
+keymap('n', '<Esc>', ':nohl<CR>', opts)

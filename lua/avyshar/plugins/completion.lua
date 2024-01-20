@@ -2,14 +2,14 @@ local M = {
   'hrsh7th/nvim-cmp',
   event = 'InsertEnter',
   dependencies = {
-    {
-      'hrsh7th/cmp-nvim-lsp',
-      event = 'InsertEnter',
-    },
-    {
-      'hrsh7th/cmp-emoji',
-      event = 'InsertEnter',
-    },
+    -- {
+    --   'hrsh7th/cmp-nvim-lsp',
+    --   event = 'InsertEnter',
+    -- },
+    -- {
+    --   'hrsh7th/cmp-emoji',
+    --   event = 'InsertEnter',
+    -- },
     {
       'hrsh7th/cmp-buffer',
       event = 'InsertEnter',
@@ -18,14 +18,14 @@ local M = {
       'hrsh7th/cmp-path',
       event = 'InsertEnter',
     },
-    {
-      'hrsh7th/cmp-cmdline',
-      event = 'InsertEnter',
-    },
-    {
-      'saadparwaiz1/cmp_luasnip',
-      event = 'InsertEnter',
-    },
+    -- {
+    --   'hrsh7th/cmp-cmdline',
+    --   event = 'InsertEnter',
+    -- },
+    -- {
+    --   'saadparwaiz1/cmp_luasnip',
+    --   event = 'InsertEnter',
+    -- },
     {
       'L3MON4D3/LuaSnip',
       event = 'InsertEnter',
@@ -33,9 +33,9 @@ local M = {
         'rafamadriz/friendly-snippets',
       },
     },
-    {
-      'hrsh7th/cmp-nvim-lua',
-    },
+    -- {
+    --   'hrsh7th/cmp-nvim-lua',
+    -- },
   },
 }
 
@@ -135,14 +135,10 @@ function M.config()
     },
     sources = {
       { name = 'copilot' },
+      { name = 'buffer' },
       { name = 'nvim_lsp' },
       { name = 'luasnip' },
-      { name = 'cmp_tabnine' },
-      { name = 'nvim_lua' },
-      { name = 'buffer' },
       { name = 'path' },
-      { name = 'calc' },
-      { name = 'emoji' },
     },
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,
