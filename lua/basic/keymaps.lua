@@ -60,3 +60,7 @@ end)
 keymap("n", "<leader>hn", function() harpoon:list():prev() end, { desc = "Harpoon Prev" })
 keymap("n", "<leader>hp", function() harpoon:list():next() end, { desc = "Harpoon Next" })
 
+
+-- LSP
+keymap('n', '[d', vim.diagnostic.goto_prev, { desc = "Diagnostics next" } )
+keymap('n', ']d', vim.diagnostic.goto_next, { desc = "Diagnostics prev" } )
