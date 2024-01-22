@@ -20,6 +20,7 @@ local setup_mason_config = require('mini.plugins.lsp-settings.mason_cfg')
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
+    'hrsh7th/cmp-nvim-lsp',
     'williamboman/mason-lspconfig.nvim',
     'williamboman/mason.nvim',
     'folke/neodev.nvim',
