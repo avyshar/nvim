@@ -12,6 +12,7 @@ return {
     opts = {},
     config = function ()
       vim.cmd[[colorscheme tokyonight]]
+      vim.cmd("hi WinSeparator guifg=#0288d1")
     end
   }
 }
