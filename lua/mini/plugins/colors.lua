@@ -29,8 +29,20 @@ return {
 
     -- optionally set the colorscheme within lazy config
     init = function()
-      vim.cmd("colorscheme poimandres")
+      -- vim.cmd("colorscheme poimandres")
       vim.cmd("hi WinSeparator guifg=#0288d1")
     end
-  }
+  },
+  {
+    "navarasu/onedark.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function ()
+      require('onedark').load()
+    end,
+    init = function()
+      vim.cmd[[colorscheme onedark]]
+      vim.cmd("hi WinSeparator guifg=#0288d1")
+    end
+  },
 }

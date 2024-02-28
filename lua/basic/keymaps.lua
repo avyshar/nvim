@@ -35,3 +35,4 @@ keymap('t', '<Esc>', '<C-\\><C-n>', opts)
 keymap('n', '<Esc>', ':nohl<CR>', opts)
 
 
+vim.keymap.set('n', '<leader>tw', ':Twilight<CR>', { desc = "Twilight" })
