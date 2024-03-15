@@ -2,7 +2,7 @@ local suggestion = require("copilot.suggestion")
 
 vim.keymap.set("i", "<C-l>", suggestion.accept_line, { noremap = true })
 vim.keymap.set("i", "<C-w>", suggestion.accept_word, { noremap = true })
-vim.keymap.set("i", "<Tab>", suggestion.accept, { noremap = true })
+vim.keymap.set("i", "<C-h>", suggestion.accept, { noremap = true })
 vim.keymap.set("i", "<C-j>", suggestion.next, { noremap = true })
 vim.keymap.set("i", "<C-k>", suggestion.prev, { noremap = true })
 -- require("copilot.suggestion").is_visible()
