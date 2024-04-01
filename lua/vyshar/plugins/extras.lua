@@ -1,6 +1,11 @@
 return {
   'tpope/vim-sleuth',
-  { 'numToStr/Comment.nvim', opts = {} },
+  {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end,
+  },
   {
     'folke/which-key.nvim',
     event = 'VimEnter',
@@ -43,4 +48,37 @@ return {
     },
   },
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  {
+    'ggandor/flit.nvim',
+    enabled = true,
+    keys = function()
+      ---@type LazyKeys[]
+      local ret = {}
+      for _, key in ipairs { 'f', 'F', 't', 'T' } do
+        ret[#ret + 1] = { key, mode = { 'n', 'x', 'o' }, desc = key }
+      end
+      return ret
+    end,
+    opts = { labeled_modes = 'nx' },
+    dependencies = {
+      'ggandor/leap.nvim',
+    },
+  },
+  {
+    'christoomey/vim-tmux-navigator',
+    cmd = {
+      'TmuxNavigateLeft',
+      'TmuxNavigateDown',
+      'TmuxNavigateUp',
+      'TmuxNavigateRight',
+      'TmuxNavigatePrevious',
+    },
+    keys = {
+      { '<c-h>', '<cmd><C-U>TmuxNavigateLeft<cr>' },
+      { '<c-j>', '<cmd><C-U>TmuxNavigateDown<cr>' },
+      { '<c-k>', '<cmd><C-U>TmuxNavigateUp<cr>' },
+      { '<c-l>', '<cmd><C-U>TmuxNavigateRight<cr>' },
+      { '<c-\\>', '<cmd><C-U>TmuxNavigatePrevious<cr>' },
+    },
+  },
 }
