@@ -1,7 +1,0 @@
-require("keymaps.diagnostics")
-require("keymaps.windows")
-require("keymaps.term")
-require("keymaps.finder")
-require("keymaps.other")
-require("keymaps.suggestion")
-require("keymaps.harpoon")
