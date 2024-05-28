@@ -1,5 +1,5 @@
 local minis = {
-  "ai",
+  -- "ai",
   -- "basics",
   "bufremove",
   -- "files",
@@ -17,7 +17,7 @@ local minis = {
   -- "pick",
   -- "sessions",
   "statusline",
-  "surround",
+  -- "surround",
   "tabline",
   -- "visits"
 }

@@ -1,18 +1,18 @@
 --stylua: ignore start
 -- Leader key =================================================================
-vim.g.mapleader = ' '
+vim.g.mapleader   = ' '
 
 -- General ====================================================================
-vim.o.backup       = false          -- Don't store backup
-vim.o.mouse        = 'a'            -- Enable mouse
-vim.o.mousescroll  = 'ver:25,hor:6' -- Customize mouse scroll
-vim.o.switchbuf    = 'usetab'       -- Use already opened buffers when switching
-vim.o.writebackup  = false          -- Don't store backup
-vim.o.undofile     = true           -- Enable persistent undo
+vim.o.backup      = false                            -- Don't store backup
+vim.o.mouse       = 'a'                              -- Enable mouse
+vim.o.mousescroll = 'ver:25,hor:6'                   -- Customize mouse scroll
+vim.o.switchbuf   = 'usetab'                         -- Use already opened buffers when switching
+vim.o.writebackup = false                            -- Don't store backup
+vim.o.undofile    = true                             -- Enable persistent undo
 
-vim.o.shada        = "'100,<50,s10,:1000,/100,@100,h" -- Limit what is stored in ShaDa file
+vim.o.shada       = "'100,<50,s10,:1000,/100,@100,h" -- Limit what is stored in ShaDa file
 
-vim.cmd('filetype plugin indent on') -- Enable all filetype plugins
+vim.cmd('filetype plugin indent on')                 -- Enable all filetype plugins
 
 -- UI =========================================================================
 vim.o.breakindent   = true      -- Indent wrapped lines to match line start
@@ -22,7 +22,7 @@ vim.o.laststatus    = 2         -- Always show statusline
 vim.o.linebreak     = true      -- Wrap long lines at 'breakat' (if 'wrap' is set)
 vim.o.list          = true      -- Show helpful character indicators
 vim.o.number        = true      -- Show line numbers
-vim.o.rnu	    = true	-- Show relative numbers
+vim.o.rnu           = true      -- Show relative numbers
 vim.o.pumblend      = 10        -- Make builtin completion menus slightly transparent
 vim.o.pumheight     = 10        -- Make popup menu smaller
 vim.o.ruler         = false     -- Don't show cursor position
@@ -36,11 +36,11 @@ vim.o.termguicolors = true      -- Enable gui colors
 vim.o.winblend      = 10        -- Make floating windows slightly transparent
 vim.o.wrap          = false     -- Display long lines as just one line
 
-vim.o.fillchars = table.concat(
+vim.o.fillchars     = table.concat(
   { 'eob: ', 'fold:╌', 'horiz:═', 'horizdown:╦', 'horizup:╩', 'vert:║', 'verthoriz:╬', 'vertleft:╣', 'vertright:╠' },
   ','
 )
-vim.o.listchars = table.concat({ 'extends:…', 'nbsp:␣', 'precedes:…', 'tab:> ' }, ',')
+vim.o.listchars     = table.concat({ 'extends:…', 'nbsp:␣', 'precedes:…', 'tab:> ' }, ',')
 
 if vim.fn.has('nvim-0.9') == 1 then
   vim.opt.shortmess:append('C') -- Don't show "Scanning..." messages
@@ -75,21 +75,22 @@ vim.opt.iskeyword:append('-')  -- Treat dash separated words as a word text obje
 vim.o.formatlistpat = [[^\s*[0-9\-\+\*]\+[\.\)]*\s\+]]
 
 -- Spelling ===================================================================
-vim.o.spelllang    = 'en,ru,uk'   -- Define spelling dictionaries
-vim.o.spelloptions = 'camel'      -- Treat parts of camelCase words as seprate words
-vim.opt.complete:append('kspell') -- Add spellcheck options for autocomplete
-vim.opt.complete:remove('t')      -- Don't use tags for completion
+vim.o.spelllang     = 'en,ru,uk'                                              -- Define spelling dictionaries
+vim.o.spelloptions  =
+'camel'                                                                       -- Treat parts of camelCase words as seprate words
+vim.opt.complete:append('kspell')                                             -- Add spellcheck options for autocomplete
+vim.opt.complete:remove('t')                                                  -- Don't use tags for completion
 
-vim.o.dictionary = vim.fn.stdpath('config') .. '/misc/dict/english.txt' -- Use specific dictionaries
+vim.o.dictionary       = vim.fn.stdpath('config') .. '/misc/dict/english.txt' -- Use specific dictionaries
 
 -- Folds ======================================================================
-vim.o.foldmethod  = 'indent' -- Set 'indent' folding method
-vim.o.foldlevel   = 5        -- Display all folds except top ones
-vim.o.foldnestmax = 10       -- Create folds only for some number of nested levels
-vim.g.markdown_folding = 1   -- Use folding by heading in markdown files
+vim.o.foldmethod       = 'manual' -- Set 'indent' folding method
+-- vim.o.foldlevel        = 5        -- Display all folds except top ones
+-- vim.o.foldnestmax      = 10       -- Create folds only for some number of nested levels
+vim.g.markdown_folding = 1 -- Use folding by heading in markdown files
 
 if vim.fn.has('nvim-0.10') == 1 then
-  vim.o.foldtext = ''        -- Use underlying text with its highlighting
+  vim.o.foldtext = '' -- Use underlying text with its highlighting
 end
 
 -- Custom autocommands ========================================================
