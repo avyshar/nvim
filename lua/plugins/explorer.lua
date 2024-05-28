@@ -9,7 +9,8 @@ return {
 
     vim.keymap.set("n", "<leader>-", function()
       local current_dir = oil.get_current_dir()
-      oil.toggle_float(current_dir)
+      oil.open(current_dir)
+      -- oil.toggle_float(current_dir)
     end)
   end
 }

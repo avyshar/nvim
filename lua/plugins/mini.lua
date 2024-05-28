@@ -13,7 +13,7 @@ local minis = {
   -- "move",
   -- "notify",
   -- "operators",
-  "pairs",
+  -- "pairs",
   -- "pick",
   -- "sessions",
   "statusline",
