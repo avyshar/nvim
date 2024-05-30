@@ -24,12 +24,12 @@ map('n', '<C-d>', '<C-d>zz')
 map('n', '<C-u>', '<C-u>zz')
 
 -- YANKY
-map({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
-map({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
-map({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
-map({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
-map("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
-map("n", "<c-n>", "<Plug>(YankyNextEntry)")
+-- map({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+-- map({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+-- map({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+-- map({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
+-- map("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
+-- map("n", "<c-n>", "<Plug>(YankyNextEntry)")
 
 -- ESC
 map('t', '<Esc><Esc>', '<C-\\><C-n>')

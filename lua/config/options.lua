@@ -28,13 +28,14 @@ vim.o.pumheight     = 10        -- Make popup menu smaller
 vim.o.ruler         = false     -- Don't show cursor position
 vim.o.shortmess     = 'aoOWFcS' -- Disable certain messages from |ins-completion-menu|
 vim.o.showmode      = false     -- Don't show mode in command line
-vim.o.showtabline   = 2         -- Always show tabline
+vim.o.showtabline   = 1        -- Always show tabline
 vim.o.signcolumn    = 'yes'     -- Always show signcolumn or it would frequently shift
 vim.o.splitbelow    = true      -- Horizontal splits will be below
 vim.o.splitright    = true      -- Vertical splits will be to the right
 vim.o.termguicolors = true      -- Enable gui colors
 vim.o.winblend      = 10        -- Make floating windows slightly transparent
 vim.o.wrap          = false     -- Display long lines as just one line
+vim.o.scrolloff     = 8
 
 vim.o.fillchars     = table.concat(
   { 'eob: ', 'fold:╌', 'horiz:═', 'horizdown:╦', 'horizup:╩', 'vert:║', 'verthoriz:╬', 'vertleft:╣', 'vertright:╠' },
@@ -51,6 +52,7 @@ end
 -- Enable syntax highlighing if it wasn't already (as it is time consuming)
 -- Don't use defer it because it affects start screen appearance
 if vim.fn.exists('syntax_on') ~= 1 then vim.cmd('syntax enable') end
+
 
 -- Editing ====================================================================
 vim.o.autoindent    = true     -- Use auto indent
@@ -93,16 +95,4 @@ if vim.fn.has('nvim-0.10') == 1 then
   vim.o.foldtext = '' -- Use underlying text with its highlighting
 end
 
--- Custom autocommands ========================================================
-local augroup = vim.api.nvim_create_augroup('CustomSettings', {})
-vim.api.nvim_create_autocmd('FileType', {
-  group = augroup,
-  callback = function()
-    -- Don't auto-wrap comments and don't insert comment leader after hitting 'o'
-    -- If don't do this on `FileType`, this keeps reappearing due to being set in
-    -- filetype plugins.
-    vim.cmd('setlocal formatoptions-=c formatoptions-=o')
-  end,
-  desc = [[Ensure proper 'formatoptions']],
-})
 --stylua: ignore end

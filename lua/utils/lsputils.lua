@@ -1,13 +1,7 @@
 local M = {}
 
 M.on_attach = function(_, bufnr)
-  local function buf_set_option(...)
-    vim.api.nvim_buf_set_option(bufnr, ...)
-  end
-
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- Mappings.
+    -- Mappings.
   local opts = { buffer = bufnr, noremap = true, silent = true }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
@@ -34,4 +28,10 @@ M.handlers = {
   ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
 }
 
+M.capabilities = function()
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
+  return capabilities
+end
+
 return M
+
