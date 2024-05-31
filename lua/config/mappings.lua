@@ -23,14 +23,6 @@ map('n', '<leader>bp', ':bprev<CR>')
 map('n', '<C-d>', '<C-d>zz')
 map('n', '<C-u>', '<C-u>zz')
 
--- YANKY
-map({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
-map({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
-map({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
-map({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
-map("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
-map("n", "<c-n>", "<Plug>(YankyNextEntry)")
-
 -- ESC
 map('t', '<Esc><Esc>', '<C-\\><C-n>')
 map('n', '<Esc>', ':noh<CR>')
@@ -38,3 +30,4 @@ map('n', '<Esc>', ':noh<CR>')
 map('n', '<leader>wq', ':wq<CR>')
 map('n', '<leader>q', ':q<CR>')
 map('n', '<leader>Q', ':q!<CR>')
+
