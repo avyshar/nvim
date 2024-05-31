@@ -51,6 +51,9 @@ return {
 
   extensions_list = {},
   extensions = {
-    "fzf",
+    fzf = {},
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown {},
+    },
   },
 }
