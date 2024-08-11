@@ -1,161 +1,27 @@
+local lsp_config = require("config.lsp")
+
 return {
-	"folke/lazydev.nvim",
-	dependencies = {
-		"neovim/nvim-lspconfig",
-		"Bilal2453/luvit-meta",
-		"hrsh7th/nvim-cmp",
-		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-path",
-		"hrsh7th/cmp-cmdline",
-		"L3MON4D3/LuaSnip",
-		"saadparwaiz1/cmp_luasnip",
-		"ibhagwan/fzf-lua",
-	},
-	config = function()
-		require("lazydev").setup({
-			library = {
-				path = "luvit-meta/library",
-				words = { "vim%.uv" },
-			},
-		})
+  "neovim/nvim-lspconfig",
+  dependencies = lsp_config.get_deps(),
+  config = function()
+    lsp_config.cmp_setup()
+    local capabilities = lsp_config.capabilities()
+    local on_attach = lsp_config.on_attach
 
-		local cmp = require("cmp")
+    local servers = {
+      "tsserver",
+      "eslint",
+      "angularls",
+      "gopls",
+    }
 
-		cmp.setup({
-			snippet = {
-				-- REQUIRED - you must specify a snippet engine
-				expand = function(args)
-					-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-					require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
-					-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-					-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-					-- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
-				end,
-			},
-			window = {
-				completion = cmp.config.window.bordered(),
-				documentation = cmp.config.window.bordered(),
-			},
-			mapping = cmp.mapping.preset.insert({
-				["<C-b>"] = cmp.mapping.scroll_docs(-4),
-				["<C-f>"] = cmp.mapping.scroll_docs(4),
-				["<C-Space>"] = cmp.mapping.complete(),
-				["<C-e>"] = cmp.mapping.abort(),
-				["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-			}),
-			sources = cmp.config.sources({
-				{ name = "nvim_lsp" },
-				{ name = "vsnip" }, -- For vsnip users.
-				-- { name = 'luasnip' }, -- For luasnip users.
-				-- { name = 'ultisnips' }, -- For ultisnips users.
-				-- { name = 'snippy' }, -- For snippy users.
-			}, {
-				{ name = "buffer" },
-			}),
-		})
+    local file_types = { "typescript", "html", "typescriptreact", "typescript.tsx", "htmlangular" }
 
-		cmp.setup.cmdline({ "/", "?" }, {
-			mapping = cmp.mapping.preset.cmdline(),
-			sources = {
-				{ name = "buffer" },
-			},
-		})
+    local util = require("lspconfig.util")
 
-		cmp.setup.cmdline(":", {
-			mapping = cmp.mapping.preset.cmdline(),
-			sources = cmp.config.sources({
-				{ name = "path" },
-			}, {
-				{ name = "cmdline" },
-			}),
-			matching = { disallow_symbol_nonprefix_matching = false },
-		})
+    local root_dir =
+      util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", "angular.json", ".git")
 
-		local fzf_lua = require("fzf-lua")
-
-		local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-		local on_attach = function(_, bufnr)
-			local function buf_set_option(...)
-				vim.api.nvim_buf_set_option(bufnr, ...)
-			end
-
-			buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-			-- Mappings.
-			local opts = { buffer = bufnr, noremap = true, silent = true }
-			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-			vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-			vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-			vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-			vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-			vim.keymap.set("n", "<space>wl", function()
-				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-			end, opts)
-			vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
-			vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-			vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-			vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
-			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-			vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-			vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
-			-- -- Mappings.
-			-- local opts = { buffer = bufnr, noremap = true, silent = true }
-			-- vim.keymap.set("n", "gD", fzf_lua.lsp_declarations, opts)
-			-- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-			-- vim.keymap.set("n", "gr", fzf_lua.lsp_references, opts)
-			-- vim.keymap.set("n", "gi", fzf_lua.lsp_implementations, opts)
-			-- vim.keymap.set("n", "<leader>lf", fzf_lua.lsp_finder, opts)
-			-- vim.keymap.set("n", "<leader>ca", fzf_lua.lsp_code_actions, opts)
-
-			-- -- vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-			-- -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-			-- vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-			-- -- vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-			-- -- vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-			-- -- vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-			-- -- vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-			-- -- vim.keymap.set("n", "<space>wl", function()
-			-- -- 	print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-			-- -- end, opts)
-			-- vim.keymap.set("n", "<leader>td", fzf_lua.lsp_typedefs, opts)
-			-- vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-			-- -- vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-			-- -- vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
-			-- vim.keymap.set("n", "[d", vim.diagnostic.get_prev, opts)
-			-- vim.keymap.set("n", "]d", vim.diagnostic.get_next, opts)
-			-- -- vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
-		end
-
-		local servers = {
-			"lua_ls",
-			"tsserver",
-			"angularls",
-			"bashls",
-			"cssls",
-			"dotls",
-			"dockerls",
-			"eslint",
-			"gopls",
-			"html",
-			"jsonls",
-			"mdx_analyzer",
-			"marksman",
-			"ocamllsp",
-			"rust_analyzer",
-			"stylelint_lsp",
-			"tailwindcss",
-		}
-
-		local lsp_config = require("lspconfig")
-
-		for i = 1, #servers do
-			lsp_config[servers[i]].setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-		end
-	end,
+    lsp_config.setup_servers(servers, capabilities, on_attach, root_dir, file_types)
+  end,
 }
