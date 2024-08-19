@@ -11,6 +11,7 @@ return {
     local servers = {
       "tsserver",
       "eslint",
+      "eslint_d",
       "angularls",
       "gopls",
     }
