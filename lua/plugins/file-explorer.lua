@@ -5,6 +5,7 @@ return {
     -- or                              , branch = '0.1.x',
     dependencies = {
       "nvim-lua/plenary.nvim",
+      "kdheepak/lazygit.nvim",
       "BurntSushi/ripgrep",
       {
         "nvim-telescope/telescope-fzf-native.nvim",
@@ -21,9 +22,12 @@ return {
             case_mode = "smart_case", -- or "ignore_case" or "respect_case"
             -- the default case_mode is "smart_case"
           },
+          harpoon = {},
         },
       })
       require("telescope").load_extension("fzf")
+      require("telescope").load_extension("harpoon")
+      require("telescope").load_extension("lazygit")
     end,
   },
   {

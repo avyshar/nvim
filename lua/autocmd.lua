@@ -26,3 +26,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     })
   end,
 })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*",
+  group = vim.api.nvim_create_augroup("lg", {}),
+  callback = function() require("lazygit.utils").project_root_dir() end,
+})

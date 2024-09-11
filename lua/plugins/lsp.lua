@@ -5,8 +5,18 @@ return {
     "williamboman/mason-lspconfig.nvim",
     {
       "pmizio/typescript-tools.nvim",
-      dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-      opts = {},
+      dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig", "dmmulroy/ts-error-translator.nvim" },
+      config = function()
+        require("ts-error-translator").setup()
+        require("typescript-tools").setup({
+          handlers = {
+            ["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
+              require("ts-error-translator").translate_diagnostics(err, result, ctx, config)
+              vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx, config)
+            end
+          },
+        })
+      end,
     },
     "joeveiga/ng.nvim",
     "b0o/schemastore.nvim",
@@ -18,7 +28,7 @@ return {
   config = function()
     require("mason").setup()
     require("mason-lspconfig").setup({
-      ensure_installed = { "lua_ls", "rust_analyzer", "tsserver", "gopls" },
+      ensure_installed = { "cssls", "lua_ls", "rust_analyzer", "tsserver", "gopls" },
     })
     local lsp_conf = require("lspconfig")
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -55,6 +65,9 @@ return {
       capabilities = capabilities,
     })
     lsp_conf.lua_ls.setup({
+      capabilities = capabilities,
+    })
+    lsp_conf.cssls.setup({
       capabilities = capabilities,
     })
     local luasnip = require("luasnip")

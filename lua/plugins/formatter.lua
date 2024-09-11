@@ -5,8 +5,10 @@ return {
       formatters_by_ft = {
         lua = { "stylua" },
         go = { "gofmt" },
-        javascript = { "eslint_d", "prettierd", "prettier", stop_after_first = true },
-        typescript = { "eslint_d", "prettierd", "prettier", stop_after_first = true },
+        javascript = { "eslint", "prettierd", "prettier", stop_after_first = true },
+        typescript = { "eslint", "prettierd", "prettier", stop_after_first = true },
+        typescriptreact = { "eslint", "prettierd", "prettier", stop_after_first = true },
+        javascriptreact = { "eslint", "prettierd", "prettier", stop_after_first = true },
       },
     })
   end,
