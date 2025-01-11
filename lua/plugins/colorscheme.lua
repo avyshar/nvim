@@ -1,14 +1,21 @@
 return {
+  'rose-pine/neovim',
+  'lifepillar/vim-solarized8',
+  'morhetz/gruvbox',
+  'AlexvZyl/nordic.nvim',
+  'comfysage/evergarden',
+  'zootedb0t/citruszest.nvim',
+  'Mofiqul/vscode.nvim',
   {
-    'rose-pine/neovim',
+    'tiagovla/tokyodark.nvim',
     config = function()
-      -- vim.cmd [[ colorscheme rose-pine ]]
+      vim.cmd 'colorscheme tokyodark'
     end,
   },
   {
-    'lifepillar/vim-solarized8',
-    config = function()
-      vim.cmd [[ colorscheme solarized8_flat ]]
-    end,
+    'catgoose/nvim-colorizer.lua',
+    event = 'BufReadPre',
+    opts = { -- set to setup table
+    },
   },
 }
